@@ -1,0 +1,8 @@
+<div class="product">
+    <h3><%= link_to product.title, product_path(product.id) %></h3>
+    <%= image_tag product.photo, width: "200" if product.photo.attached? %>
+    <ul>
+        <li><%= product.description %></li>
+        <li><%= product.price %> €</li>
+    </ul>
+</div>

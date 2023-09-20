@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+iphone:
+  title: iphone 13
+  description: Esto es un iphone.
+  price: 1000
+
+macbook:
+  title: macbook 2012
+  description: Esto es un macbook.
+  price: 480
