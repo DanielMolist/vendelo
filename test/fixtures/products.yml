@@ -4,8 +4,16 @@ iphone:
   title: iphone 13
   description: Esto es un iphone.
   price: 1000
+  category: computers
 
 macbook:
   title: macbook 2012
   description: Esto es un macbook.
   price: 480
+  category: computers
+
+switch:
+  title: nintendo switch
+  description: Es la nintendo de 2023.
+  price: 200
+  category: videogames

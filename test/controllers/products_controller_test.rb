@@ -4,7 +4,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
     get products_path
     assert_response :success
-    assert_select ".product", 2
+    assert_select ".product", 3
   end
 
   test "should get show" do
@@ -29,43 +29,45 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   test "allows to create a new product" do
     post products_path, params: {
-                     product: {
-                       title: "Nuevo producto",
-                       description: "Descripcion del producto.",
-                       price: 25,
-                     },
-                   }
+                          product: {
+                            title: "Nuevo producto",
+                            description: "Descripcion del producto.",
+                            price: 25,
+                            category_id: categories(:computers).id,
+                          },
+                        }
     assert_redirected_to products_path
     assert_equal flash[:notice], "Tu producto se ha creado correctamente."
   end
 
   test "does not allow to create a new product with empty fields" do
     post products_path, params: {
-                     product: {
-                       title: "",
-                       description: "Descripcion del producto.",
-                       price: 25,
-                     },
-                   }
+                          product: {
+                            title: "",
+                            description: "Descripcion del producto.",
+                            price: 25,
+                            category_id: categories(:computers).id,
+                          },
+                        }
     assert_response :unprocessable_entity
   end
 
   test "allows to update a product" do
     patch product_path(products(:macbook)), params: {
-                                        product: {
-                                          price: 300,
-                                        },
-                                      }
+                                              product: {
+                                                price: 300,
+                                              },
+                                            }
     assert_redirected_to products_path
     assert_equal flash[:notice], "Tu producto se ha actualizado correctamente."
   end
 
   test "does not allow to update a product with an invalid field" do
     patch product_path(products(:macbook)), params: {
-                                        product: {
-                                          price: nil,
-                                        },
-                                      }
+                                              product: {
+                                                price: nil,
+                                              },
+                                            }
     assert_response :unprocessable_entity
   end
 
